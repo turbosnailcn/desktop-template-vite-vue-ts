@@ -15,18 +15,6 @@ function pathResolve(dir: string) {
   return resolve(process.cwd(), ".", dir);
 }
 
-//获取本地IP地址，配置server
-function getLocalhost(): string {
-  let localhost = "127.0.0.1";
-  try {
-    localhost = os.hostname();
-  } catch (e) {
-    localhost = "127.0.0.1";
-  }
-
-  return localhost;
-}
-
 // vite配置 参考文档：https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const root = process.cwd();
@@ -93,7 +81,7 @@ export default defineConfig(({ mode }) => {
       chunkSizeWarningLimit: 2000,
     },
     server: {
-      host: getLocalhost(),
+      host: "0.0.0.0",
       port: 3000,
     },
   };
